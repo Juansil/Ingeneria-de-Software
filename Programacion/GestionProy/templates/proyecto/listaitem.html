@@ -1,0 +1,70 @@
+{% extends 'proyecto/indexitem.html' %}
+
+{% block title%}
+	Lista de Items
+{% endblock %}
+
+
+{% block header %}
+	<h4> Items</h4>
+{% endblock %}
+
+
+
+{%block buscador%}
+		<div style="text-align: right;width:515px">
+		<li>
+			<a class="btn btn-outline-secondary my-2 my-sm-0" href="{% url 'proyecto:buscar_item'  %}"  style='width:250px' >Buscador</a>
+		</li>
+		</div>
+{%endblock%}
+
+
+{%block content %}
+	{%if items%}
+		<br></br>
+	
+		<table class="table table-striped table-dark">
+			<thead>
+				
+					<th  bgcolor="#FC8E0A">Codigo</th>
+					<th  bgcolor="#FC8E0A">Version</th>
+					<th  bgcolor="#FC8E0A">Estado</th>
+					<th  bgcolor="#FC8E0A">Descripcion</th>
+					<th  bgcolor="#FC8E0A">Dependencia</th>
+					<th  bgcolor="#FC8E0A">Prioridad</th>
+					<th  bgcolor="#FC8E0A">Fecha_ini</th>
+					<th  bgcolor="#FC8E0A">Fecha_mod</th>
+					<th  bgcolor="#FC8E0A">Observacion</th>
+					<th  bgcolor="#FC8E0A">LB</th>
+					<th  bgcolor="#FC8E0A">Proyecto</th>
+					<th  bgcolor="#FC8E0A">UsuarioEncargado</th>
+					
+			</thead>
+			<tbody>
+				{%for item in items%}
+				<tr>
+					<td>{{item.id_item}}</td>
+					<td>{{item.version}}</td>
+					<td>{{item.estado}}</td>
+					<td>{{item.descripcion}}</td>
+					<td>{{item.dependencia}}</td>
+					<th>{{item.prioridad}}</th>
+					<td>{{item.fecha_ini}}</td>
+					<td>{{item.fecha_mod}}</td>
+					<td>{{item.observacion}}</td>
+					<td>{{item.linea_base}}</td>
+					<td>{{item.proyecto}}</td>
+					<td>{{item.user}}</td>
+					
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% else %}
+	
+		<h1>No hay items cargados</h1>
+		
+	{%endif%}
+	
+{% endblock %}

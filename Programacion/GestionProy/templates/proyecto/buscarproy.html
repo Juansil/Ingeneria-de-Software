@@ -1,0 +1,68 @@
+{% extends 'proyecto/listaproyecto.html' %}
+{%block buscador%}
+
+	<div style="text-align: right;width:450px">
+		<li>
+			<form class="form-inline"  action="{% url 'proyecto:buscar_proy' %}" method="GET" value="{{request.GET.q}}">
+			<input type="text" class="form-control mr-sm-2" name="q" value="{{request.GET.q}}" placeholder="Buscar..."/>
+			<input class="btn btn-outline-secondary my-2 my-sm-0" type="submit" name="submit" value="Search"/>
+			</form>
+		</li>
+	</div>
+
+
+	
+{%endblock%}
+
+{%block content %}
+
+	
+	{% if submitbutton == 'Search' and request.GET.q != '' %}
+		{% if results %}
+		<h2 style="color:white">Resultados de la  busqueda  de " <b>{{ request.GET.q }}</b>"</h2>
+		<br/><br/>
+		
+		
+	
+	<div class="container">
+		<table class="table table-striped table-dark">
+			<thead>
+				
+					<th class="bg-info">#</th>
+					<th class="bg-info">Nombre</th>
+					<th class="bg-info">Objetivo</th>
+					<th class="bg-info">Inicio</th>
+					<th class="bg-info">Fin</th>
+					<th class="bg-info">Fase</th>
+					<th class="bg-info">Estado</th>
+					
+			<tbody>
+		
+		
+
+		{% for result in results %}
+
+		<tr>
+					<td>{{result.id_proyecto}}</td>
+					<td>{{result.nombre}}</td>
+					<td>{{result.objetivo}}</td>
+					<td>{{result.fecha_ini}}</td>
+					<td>{{result.fecha_fin}}</td>
+					<td>{{result.fase}}</td>
+					<td>{{result.estado}}</td>
+					
+		</tr>
+		
+
+		{% endfor %}
+		</tbody>
+		</table>
+		</div>
+		
+		{% else %}
+		
+		<h2 style="color:white">No hay Resultados</h2>
+		<br/><br/>
+		{% endif %}
+		{% endif %}
+{%endblock%}

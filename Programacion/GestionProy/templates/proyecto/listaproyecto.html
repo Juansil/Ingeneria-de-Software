@@ -1,0 +1,60 @@
+{% extends 'proyecto/index.html' %}
+
+{% block title%}
+	Lista de Proyectos
+{% endblock %}
+
+
+{% block header %}
+	<h4> Listado de Proyectos</h4>
+{% endblock %}
+
+
+
+{%block buscador%}
+		<div style="text-align: right;width:515px">
+		<li>
+			<a class="btn btn-outline-secondary my-2 my-sm-0" href="{% url 'proyecto:buscar_proy'  %}"  style='width:250px' >Buscador</a>
+		</li>
+		</div>
+{%endblock%}
+
+{%block content %}
+	{%if proyectos%}
+	<br></br>
+	
+	<div class="container">
+		<table class="table table-striped table-dark">
+			<thead>
+				
+					<th class="bg-info">#</th>
+					<th class="bg-info">Nombre</th>
+					<th class="bg-info">Objetivo</th>
+					<th class="bg-info">Inicio</th>
+					<th class="bg-info">Fin</th>
+					<th class="bg-info">Fase</th>
+					<th class="bg-info">Estado</th>
+					
+			<tbody>
+				{%for proy in proyectos%}
+				<tr>
+					<td>{{proy.id_proyecto}}</td>
+					<td>{{proy.nombre}}</td>
+					<td>{{proy.objetivo}}</td>
+					<td>{{proy.fecha_ini}}</td>
+					<td>{{proy.fecha_fin}}</td>
+					<td>{{proy.fase}}</td>
+					<td>{{proy.estado}}</td>
+					
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	{% else %}
+	
+		<h1>No hay proyectos cargados</h1>
+		
+	{%endif%}
+	
+{% endblock %}

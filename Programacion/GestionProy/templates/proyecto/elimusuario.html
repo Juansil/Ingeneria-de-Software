@@ -1,0 +1,57 @@
+{%extends 'proyecto/moduser.html'%}
+
+{% block title%}
+Eliminar Proyecto
+{% endblock %}
+
+
+
+{% block header %}
+	<h4> Eliminacion de Usuario</h4>
+{% endblock %}
+
+
+{% block content%}
+<form method= "POST">
+	{%csrf_token%}
+	
+		<br></br>
+		<br></br>
+		<br></br>
+		<center>
+		<table width="1000" cellspacing="1" cellpadding="3" border="0" bgcolor="#165480">
+			<tr>
+			   <td bgcolor="#0B7D84">
+			<font size=5 face="verdana, arial, helvetica">
+			<center>
+			<b>¿Desea eliminar el registro de {{usuario.nombre}} ?</b>
+			</center>
+			</font>
+			   </td>
+			</tr>
+			<tr>
+				<td bgcolor="#ffffcc">
+			   
+			  
+		<div style="text-align: right;width:750px" >
+			<div  class="btn-group">
+			<button type="submit" class="btn btn-danger" style='width:250px'>Eliminar</button>
+			</div>
+			
+			<div  class="btn-group">
+			<a type="submit" class="btn btn-secondary" style='width:250px' href="{% url 'proyecto:mod_'%}">Cancelar</a>
+			</div>
+		
+			
+		</div>
+			  
+			   </td>
+			</tr>
+		</table>
+		</center>
+		
+	
+	
+</form>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'proyecto/listalb.html' %}
+{%block buscador%}
+
+	<div style="text-align: right;width:450px">
+		<li>
+			<form class="form-inline"  action="{% url 'proyecto:buscar_lb' %}" method="GET" value="{{request.GET.q}}">
+			<input type="text" class="form-control mr-sm-2" name="q" value="{{request.GET.q}}" placeholder="Buscar..."/>
+			<input class="btn btn-outline-secondary my-2 my-sm-0" type="submit" name="submit" value="Search"/>
+			</form>
+		</li>
+	</div>
+
+
+	
+{%endblock%}
+
+{%block content %}
+
+	
+	{% if submitbutton == 'Search' and request.GET.q != '' %}
+		{% if results %}
+		<h2 style="color:white">Resultados de la  busqueda  de " <b>{{ request.GET.q }}</b>"</h2>
+		<br/><br/>
+		
+		
+	
+	<div class="container">
+		<table class="table table-striped table-dark">
+			<thead>
+				
+					<th class="bg-danger">#</th>
+					<th class="bg-danger">Descripcion</th>
+					<th class="bg-danger">Proyecto</th>
+					<th class="bg-danger">Estado</th>
+					
+					
+			<tbody>
+		
+		
+
+		{% for result in results %}
+
+		<tr>
+					<td>{{result.id_lb}}</td>
+					<td>{{result.descripcion}}</td>
+					<td>{{result.proyecto}}</td>
+					<td>{{result.estado}}</td>
+					
+					
+		</tr>
+		
+
+		{% endfor %}
+		</tbody>
+		</table>
+		</div>
+		
+		{% else %}
+		
+		<h2 style="color:white">No hay Resultados</h2>
+		<br/><br/>
+		{% endif %}
+		{% endif %}
+{%endblock%}

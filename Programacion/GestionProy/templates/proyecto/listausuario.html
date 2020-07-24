@@ -1,0 +1,62 @@
+{% extends 'proyecto/indexuser.html' %}
+
+{% block title%}
+	Lista de Usuarios
+{% endblock %}
+
+
+{% block header %}
+	<h4>Usuarios</h4>
+{% endblock %}
+
+
+{%block buscador%}
+		<div style="text-align: right;width:515px">
+		<li>
+			<a class="btn btn-outline-secondary my-2 my-sm-0" href="{% url 'proyecto:buscar_user'  %}"  style='width:250px' >Buscador</a>
+		</li>
+		</div>
+{%endblock%}
+
+{%block content %}
+	{%if usuarios%}
+		<br></br>
+	
+	<div class="container">
+		<table class="table table-striped table-dark">
+			<thead>
+				
+					<th class="bg-success">Cedula</th>
+					<th class="bg-success">Nombre</th>
+					<th class="bg-success">Apellido</th>
+					<th class="bg-success">Fecha_Nac</th>
+					<th class="bg-success">Direccion</th>
+					<th class="bg-success">Telefono</th>
+					<th class="bg-success">Rol</th>
+					<th class="bg-success">Proyecto</th>
+					
+			</thead>
+			<tbody>
+				{%for usuario in usuarios%}
+				<tr>
+					<td>{{usuario.cedula}}</td>
+					<td>{{usuario.nombre}}</td>
+					<td>{{usuario.apellido}}</td>
+					<td>{{usuario.fecha_nac}}</td>
+					<td>{{usuario.direccion}}</td>
+					<td>{{usuario.telefono}}</td>
+					<td>{{usuario.cod_rol}}</td>
+					<td>{{usuario.proyecto}}</td>
+					
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		</div>
+	{% else %}
+	
+		<h1>No hay usuarios% cargados</h1>
+		
+	{%endif%}
+	
+{% endblock %}

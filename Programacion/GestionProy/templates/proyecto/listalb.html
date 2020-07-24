@@ -1,0 +1,54 @@
+{% extends 'proyecto/indexlb.html' %}
+
+{% block title%}
+	Lista de Lineas Base
+{% endblock %}
+
+
+{% block header %}
+	<h4>Lineas Base</h4>
+{% endblock %}
+
+{%block buscador%}
+		<div style="text-align: right;width:480px">
+		<li>
+			<a class="btn btn-outline-secondary my-2 my-sm-0" href="{% url 'proyecto:buscar_lb'  %}"  style='width:250px' >Buscador</a>
+		</li>
+		</div>
+{%endblock%}
+
+{%block content %}
+	{%if lbs%}
+	<br></br>
+	
+	<div class="container">
+		<table class="table table-striped table-dark">
+			<thead>
+				
+					<th class="bg-danger">#</th>
+					<th class="bg-danger">Descripcion</th>
+					<th class="bg-danger">Proyecto</th>
+					<th class="bg-danger">Estado</th>
+					
+					
+			<tbody>
+				{%for lb in lbs%}
+				<tr>
+					<td>{{lb.id_lb}}</td>
+					<td>{{lb.descripcion}}</td>
+					<td>{{lb.proyecto}}</td>
+					<td>{{lb.estado}}</td>
+					
+					
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	{% else %}
+	
+		<h1>No hay lineas bases cargadas</h1>
+		
+	{%endif%}
+	
+{% endblock %}

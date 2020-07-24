@@ -1,0 +1,47 @@
+{%extends 'proyecto/index.html'%}
+
+{% block title%}
+Registrar Proyecto
+{% endblock %}
+
+
+
+{% block header %}
+	<h4> Cargar Nuevo Proyecto</h4>
+{% endblock %}
+
+
+
+
+
+{% block content%}
+<form method= "POST">
+	{%csrf_token%}
+	{%if error%}
+		<h2>{{error}}</h2>
+	{%else%}
+	
+	<div class='container'>
+	<br></br>
+	
+		{{proy_form.as_p}}
+		
+		
+		<div style="text-align: right;width:550px" >
+			<div  class="btn-group">
+			<button type="submit" class="btn btn-primary" style='width:250px'>Registrar</button>
+			</div>
+			
+			<div  class="btn-group">
+			<a type="submit" class="btn btn-secondary" style='width:250px' href="{% url 'proyecto:Principal'%}">Cancelar</a>
+			</div>
+		
+			
+		</div>
+		<br></br>
+	</div>
+	{%endif%}
+	
+</form>
+
+{% endblock %}
